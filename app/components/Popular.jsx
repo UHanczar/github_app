@@ -20,12 +20,12 @@ class Popular extends Component {
 
   render() {
     const languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python'];
-    console.log('Up here: ', this);
+    // console.log('Up here: ', this);
     return (
       <ul className='languages'>
-        <p>Selected Language: {this.state.selectedLanguage}</p>
+        {/* <p>Selected Language: {this.state.selectedLanguage}</p> */}
         {languages.map((lang) => {
-          console.log('down here: ', this);
+          // console.log('down here: ', this);
           return (
             <li
               key={lang}
