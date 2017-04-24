@@ -24,6 +24,8 @@ class Popular extends Component {
     return (
       <ul className='languages'>
         <p>Selected Language: {this.state.selectedLanguage}</p>
+        {/* setting arrow function and deleting this after it (map function) */}
+        {/* in li tag changing from onClick={this.updateLanguage.bind(null, lang)} to */}
         {languages.map((lang) => {
           console.log('down here: ', this);
           return (
