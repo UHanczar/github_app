@@ -7,7 +7,7 @@ class Popular extends Component {
       selectedLanguage: 'All'
     };
 
-    this.updateLanguage = this.updateLanguage.bind(this);
+    // this.updateLanguage = this.updateLanguage.bind(this);
   }
 
   updateLanguage(lang) {
@@ -24,15 +24,15 @@ class Popular extends Component {
     return (
       <ul className='languages'>
         <p>Selected Language: {this.state.selectedLanguage}</p>
-        {languages.map(function (lang) {
+        {languages.map((lang) => {
           console.log('down here: ', this);
           return (
             <li
               key={lang}
               style={lang === this.state.selectedLanguage ? { color: '#d0021b' } : null}
-              onClick={this.updateLanguage.bind(null, lang)}>{lang}</li>
+              onClick={() => this.updateLanguage(lang)}>{lang}</li>
           );
-        }, this)}
+        })}
       </ul>
     );
   }
