@@ -21,7 +21,7 @@ class Popular extends Component {
   }
 
   updateLanguage(lang) {
-    this.setState(function () {
+    this.setState(() => {
       return {
         selectedLanguage: lang,
         repos: null
