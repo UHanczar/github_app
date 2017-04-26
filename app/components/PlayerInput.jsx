@@ -10,16 +10,7 @@ class PlayerInput extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    const value = event.target.value;
-    this.setState(() => {
-      return {
-        userName: value
-      };
-    });
+    this.onHandleSubmit = this.onHandleSubmit.bind(this);
   }
 
   onHandleSubmit(event) {
@@ -31,9 +22,18 @@ class PlayerInput extends Component {
     );
   }
 
+  handleChange(event) {
+    const value = event.target.value;
+    this.setState(() => {
+      return {
+        userName: value
+      };
+    });
+  }
+
   render() {
     return (
-      <form className='column' onSubmit={(event) => this.onHandleSubmit(event)}>
+      <form className='column' onSubmit={this.onHandleSubmit}>
         <label className='header' htmlFor='userName'>
           {this.props.label}
         </label>
