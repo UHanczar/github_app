@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import PlayerInput from './PlayerInput';
+import PlayerPreview from './PlayerPreview';
 
 class Battle extends Component {
   constructor(props) {
@@ -13,6 +15,7 @@ class Battle extends Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
   handleSubmit(id, userName) {
@@ -25,16 +28,44 @@ class Battle extends Component {
     });
   }
 
+  handleReset(id) {
+    this.setState(() => {
+      const newState = {};
+      newState[`${id}Name`] = '';
+      newState[`${id}Image`] = null;
+
+      return newState;
+    });
+  }
+
   render() {
+    const match = this.props.match;
     const playerOneName = this.state.playerOneName;
     const playerTwoName = this.state.playerTwoName;
+    const playerOneImage = this.state.playerOneImage;
+    const playerTwoImage = this.state.playerTwoImage;
 
     return (
       <div>
         <div className='row'>
           {!playerOneName && <PlayerInput id='playerOne' label='Player One' onSubmit={this.handleSubmit} />}
+
+          {playerOneName && <PlayerPreview avatar={playerOneImage} userName={playerOneName} id='playerOne' onReset={this.handleReset} />}
+
           {!playerTwoName && <PlayerInput id='playerTwo' label='Player Two' onSubmit={this.handleSubmit} />}
+
+          {playerTwoName && <PlayerPreview avatar={playerTwoImage} userName={playerTwoName} id='playerTwo' onReset={this.handleReset} />}
         </div>
+
+        {playerOneImage && playerTwoImage &&
+          <Link className='button'
+            to={{
+              pathname: `${match.url}/results`,
+              search: `?playerOneName=${playerOneName}&playerTwoName=${playerTwoName}`
+            }}
+          >
+              Battle
+          </Link>}
       </div>
     );
   }
