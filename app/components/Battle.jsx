@@ -50,11 +50,25 @@ class Battle extends Component {
         <div className='row'>
           {!playerOneName && <PlayerInput id='playerOne' label='Player One' onSubmit={this.handleSubmit} />}
 
-          {playerOneName && <PlayerPreview avatar={playerOneImage} userName={playerOneName} id='playerOne' onReset={this.handleReset} />}
+          {playerOneName && <PlayerPreview avatar={playerOneImage} userName={playerOneName}>
+            <button
+              className='reset'
+              onClick={this.handleReset.bind(null, 'playerOne')}
+            >
+              Reset
+            </button>
+          </PlayerPreview>}
 
           {!playerTwoName && <PlayerInput id='playerTwo' label='Player Two' onSubmit={this.handleSubmit} />}
 
-          {playerTwoName && <PlayerPreview avatar={playerTwoImage} userName={playerTwoName} id='playerTwo' onReset={this.handleReset} />}
+          {playerTwoName && <PlayerPreview avatar={playerTwoImage} userName={playerTwoName}>
+            <button
+              className='reset'
+              onClick={this.handleReset.bind(null, 'playerTwo')}
+            >
+              Reset
+            </button>
+          </PlayerPreview>}
         </div>
 
         {playerOneImage && playerTwoImage &&

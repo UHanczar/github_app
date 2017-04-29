@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import SelectedLanguage from './SelectedLanguage';
 import RepoGrid from './RepoGrid';
+import Loading from './Loading';
 import api from './../utils/api';
 
 
@@ -44,7 +45,7 @@ class Popular extends Component {
       <div>
         <SelectedLanguage selectedLanguage={this.state.selectedLanguage} onSelect={this.updateLanguage} />
         {/* {JSON.stringify(this.state.repos, null, 2)} */}
-        {!this.state.repos ? <li>LOADING</li> : <RepoGrid repos={this.state.repos} />}
+        {!this.state.repos ? <li><Loading /></li> : <RepoGrid repos={this.state.repos} />}
       </div>
     );
   }

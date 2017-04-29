@@ -86,10 +86,10 @@ const battle = (players) => {
   return axios.all(players.map(getUserData)).then(sortPlayers).catch(handleError);
 };
 
-battle(['UHanczar', 'dfdf']).then((data) => {
-  const winner = data[0].profile.login;
-  console.info('winner: ', winner);
-});
+// battle(['UHanczar', 'dfdf']).then((data) => {
+//   const winner = data[0].profile.login;
+//   console.info('winner: ', winner);
+// });
 
 const fetchPopularRepos = (language) => {
   const encodedURI = window.encodeURI('https://api.github.com/search/repositories?q=stars:>1+language:' + language + '&sort=stars&order=desc&type=Repositories');

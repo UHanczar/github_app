@@ -11,7 +11,7 @@ const PlayerPreview = (props) => {
           alt={`Avatar for ${props.userName}`}
         />
         <h2 className='username'>@{props.userName}</h2>
-        <button className='reset' onClick={props.onReset.bind(null, props.id)}>Reset</button>
+        {props.children}
       </div>
     </div>
   );
@@ -19,9 +19,7 @@ const PlayerPreview = (props) => {
 
 PlayerPreview.propTypes = {
   avatar: PropTypes.string.isRequired,
-  userName: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  onReset: PropTypes.func.isRequired
+  userName: PropTypes.string.isRequired
 };
 
 export default PlayerPreview;
